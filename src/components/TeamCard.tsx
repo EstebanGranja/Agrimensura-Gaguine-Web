@@ -32,7 +32,7 @@ export default function TeamCard({ member }: TeamCardProps) {
             href={member.whatsapp}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 bg-[#25D366] text-white px-5 py-2 rounded-lg font-medium hover:bg-[#20BD5A] transition-all duration-300"
+            className="flex items-center gap-2 bg-[#1DA851] text-white px-5 py-2 rounded-lg font-medium hover:bg-[#178C41] transition-all duration-300"
           >
             <MessageCircle size={18} />
             Contactar

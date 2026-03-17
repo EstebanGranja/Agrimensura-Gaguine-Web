@@ -1,5 +1,7 @@
 import { useState } from 'react';
-import { Menu, X, MessageCircle } from 'lucide-react';
+import logo from '../public/images/logo.jpeg';
+import { Menu, X } from 'lucide-react';
+import whatsappLogo from '../public/images/whatsapp.png';
 
 interface HeaderProps {
   currentPage: string;
@@ -22,22 +24,27 @@ export default function Header({ currentPage, onNavigate }: HeaderProps) {
   };
 
   return (
-    <header className="bg-[#F2F1DF] shadow-sm sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          <div className="flex items-center gap-3 cursor-pointer" onClick={() => handleNavigate('inicio')}>
-            <div className="w-10 h-10 rounded-full bg-[#26240B] flex items-center justify-center text-[#F2F1DF] font-bold text-lg">
-              AG
-            </div>
-            <span className="font-bold text-[#26240B] text-lg hidden sm:block">
+    <header className="bg-[#E2E1CF] shadow-sm sticky top-0 z-50 relative overflow-hidden">
+      {/* Gradiente sutil desde la mitad hacia la derecha */}
+      <div className="pointer-events-none absolute inset-0 z-0"
+        style={{
+          background: 'linear-gradient(to right, transparent 50%, #B3B2A3 100%)',
+          opacity: 0.32
+        }}
+      />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="relative flex items-center h-20 sm:h-24">
+          <div className="flex items-center gap-3 sm:gap-6 -ml-2 sm:-ml-2 md:-ml-8 lg:-ml-16 cursor-pointer z-10" onClick={() => handleNavigate('inicio')}>
+            <img src={logo} alt="Logo Agrimensura Gaguine" className="w-16 h-16 sm:w-[4.5rem] sm:h-[4.5rem] rounded-full object-cover bg-[#E2E1CF]" />
+            <span
+              className="text-[#26240B] text-base sm:text-lg lg:text-xl mt-1 sm:mt-0 uppercase tracking-[0.04em] sm:tracking-[0.08em] leading-tight whitespace-nowrap"
+              style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 500 }}
+            >
               Agrimensura Gaguine
-            </span>
-            <span className="font-bold text-[#26240B] text-sm sm:hidden">
-              A. Gaguine
             </span>
           </div>
 
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden md:flex items-center gap-8 text-base sm:text-lg absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
             {navItems.map((item) => (
               <button
                 key={item.id}
@@ -54,22 +61,24 @@ export default function Header({ currentPage, onNavigate }: HeaderProps) {
             ))}
           </nav>
 
-          <a
-            href="https://wa.me/5493515407257"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hidden md:flex items-center gap-2 bg-[#25D366] text-white px-4 py-2 rounded-lg font-medium hover:bg-[#20BD5A] transition-all duration-300"
-          >
-            <MessageCircle size={20} />
-            WhatsApp
-          </a>
-
-          <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2 text-[#26240B]"
-          >
-            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          {/* Contenedor absoluto a la derecha para WhatsApp y menú móvil */}
+          <div className="absolute right-0 top-1/2 -translate-y-1/2 flex items-center gap-2 z-10">
+            <a
+              href="https://wa.me/5493515407257"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden md:flex items-center gap-2 bg-[#1DA851] text-white px-4 py-2 rounded-lg font-medium hover:bg-[#178C41] transition-all duration-300"
+            >
+              <img src={whatsappLogo} alt="WhatsApp" className="w-5 h-5" />
+              WhatsApp
+            </a>
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="md:hidden p-2 text-[#26240B]"
+            >
+              {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
 
         <div

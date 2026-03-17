@@ -6,18 +6,35 @@ interface ContactCardProps {
   value: string;
   link?: string;
   external?: boolean;
+  compact?: boolean;
 }
 
-export default function ContactCard({ icon: Icon, label, value, link, external }: ContactCardProps) {
+export default function ContactCard({ icon: Icon, label, value, link, external, compact = false }: ContactCardProps) {
+  const cardClassName = compact
+    ? 'bg-[#D9D8C7] rounded-lg p-4 shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1 flex flex-col items-center text-center'
+    : 'bg-[#D9D8C7] rounded-lg p-6 shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1 flex flex-col items-center text-center';
+
+  const iconContainerClassName = compact
+    ? 'w-10 h-10 bg-[#26240B] rounded-full flex items-center justify-center mb-3'
+    : 'w-12 h-12 bg-[#26240B] rounded-full flex items-center justify-center mb-4';
+
+  const titleClassName = compact
+    ? 'font-bold text-[#26240B] text-base mb-1'
+    : 'font-bold text-[#26240B] text-lg mb-2';
+
+  const valueClassName = compact
+    ? 'text-[#26240B] text-xs'
+    : 'text-[#26240B] text-sm';
+
   const content = (
-    <div className="bg-[#D9D8C7] rounded-lg p-6 shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1 flex flex-col items-center text-center">
-      <div className="w-12 h-12 bg-[#26240B] rounded-full flex items-center justify-center mb-4">
-        <Icon size={24} className="text-[#F2F1DF]" />
+    <div className={cardClassName}>
+      <div className={iconContainerClassName}>
+        <Icon size={compact ? 20 : 24} className="text-[#F2F1DF]" />
       </div>
-      <h3 className="font-bold text-[#26240B] text-lg mb-2">
+      <h3 className={titleClassName}>
         {label}
       </h3>
-      <p className="text-[#26240B] text-sm">
+      <p className={valueClassName}>
         {value}
       </p>
     </div>

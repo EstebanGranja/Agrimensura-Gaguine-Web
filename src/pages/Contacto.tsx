@@ -1,5 +1,6 @@
-import { Phone, MessageCircle, Mail, MapPin, Clock, Instagram, Facebook } from 'lucide-react';
+import { Phone, Mail, MapPin, Clock, Instagram, Facebook, MessageCircle } from 'lucide-react';
 import ContactCard from '../components/ContactCard';
+import whatsappLogo from '../public/images/whatsapp.png';
 
 export default function Contacto() {
   const contactInfo = [
@@ -30,7 +31,7 @@ export default function Contacto() {
     },
     {
       icon: Clock,
-      label: 'Horario',
+      label: 'Horarios de Atención',
       value: 'Lunes a Sábado: 08:00 – 20:00 hs'
     },
     {
@@ -49,6 +50,9 @@ export default function Contacto() {
     }
   ];
 
+  const primaryContactInfo = contactInfo.slice(0, 5);
+  const socialContactInfo = contactInfo.slice(5);
+
   return (
     <div className="min-h-screen bg-[#F2F1DF] py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -63,24 +67,49 @@ export default function Contacto() {
             href="https://wa.me/5493515407257"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 bg-[#25D366] text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[#20BD5A] transition-all duration-300 transform hover:scale-105 shadow-lg"
+            className="inline-flex items-center gap-3 bg-[#1DA851] text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[#178C41] transition-all duration-300 transform hover:scale-105 shadow-lg"
           >
-            <MessageCircle size={24} />
+            <img src={whatsappLogo} alt="WhatsApp" className="w-6 h-6" />
             Escribinos por WhatsApp
           </a>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {contactInfo.map((info, index) => (
-            <ContactCard
-              key={index}
-              icon={info.icon}
-              label={info.label}
-              value={info.value}
-              link={info.link}
-              external={info.external}
-            />
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-6">
+          {primaryContactInfo.map((info, index) => (
+            <div
+              key={info.label}
+              className={`lg:col-span-2 ${
+                index === 3 ? 'lg:col-start-2' : index === 4 ? 'lg:col-start-4' : ''
+              }`}
+            >
+              <ContactCard
+                icon={info.icon}
+                label={info.label}
+                value={info.value}
+                link={info.link}
+                external={info.external}
+              />
+            </div>
           ))}
+        </div>
+
+        <div className="mt-12">
+          <h2 className="text-2xl font-bold text-[#26240B] text-center mb-6">
+            Seguinos en redes
+          </h2>
+          <div className="grid gap-6 sm:grid-cols-2 lg:max-w-4xl lg:mx-auto">
+            {socialContactInfo.map((info) => (
+              <ContactCard
+                key={info.label}
+                icon={info.icon}
+                label={info.label}
+                value={info.value}
+                link={info.link}
+                external={info.external}
+                compact
+              />
+            ))}
+          </div>
         </div>
       </div>
     </div>

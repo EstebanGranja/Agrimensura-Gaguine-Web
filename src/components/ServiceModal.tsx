@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { X, ChevronLeft, ChevronRight, MessageCircle } from 'lucide-react';
+import { X, ChevronLeft, ChevronRight } from 'lucide-react';
+import whatsappLogo from '../public/images/whatsapp.png';
 import { Service } from '../data/services';
 
 interface ServiceModalProps {
@@ -105,9 +106,9 @@ export default function ServiceModal({ service, onClose }: ServiceModalProps) {
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 bg-[#25D366] text-white px-6 py-3 rounded-lg font-medium hover:bg-[#20BD5A] transition-all duration-300"
+              className="flex items-center justify-center gap-2 bg-[#1DA851] text-white px-6 py-3 rounded-lg font-medium hover:bg-[#178C41] transition-all duration-300"
             >
-              <MessageCircle size={20} />
+              <img src={whatsappLogo} alt="WhatsApp" className="w-5 h-5" />
               Consultar
             </a>
             <button
