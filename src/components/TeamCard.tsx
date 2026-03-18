@@ -7,8 +7,8 @@ interface TeamCardProps {
 
 export default function TeamCard({ member }: TeamCardProps) {
   return (
-    <div className="bg-[#D9D8C7] rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 flex flex-col md:flex-row">
-      <div className="md:w-48 h-64 md:h-auto flex-shrink-0">
+    <div className="bg-[#D9D8C7] rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 flex flex-col md:flex-row max-w-5xl mx-auto">
+      <div className="md:w-60 h-64 md:h-auto flex-shrink-0">
         <img
           src={member.image}
           alt={member.name}

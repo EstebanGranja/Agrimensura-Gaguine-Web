@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
+import { Navigate, Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import Header from './components/Header';
 import WhatsAppButton from './components/WhatsAppButton';
 import Inicio from './pages/Inicio';
@@ -6,19 +7,32 @@ import Servicios from './pages/Servicios';
 import Nosotros from './pages/Nosotros';
 import Contacto from './pages/Contacto';
 
+const pageToPath = {
+  inicio: '/',
+  servicios: '/servicios',
+  nosotros: '/nosotros',
+  contacto: '/contacto'
+} as const;
+
+const pathToPage: Record<string, keyof typeof pageToPath> = {
+  '/': 'inicio',
+  '/servicios': 'servicios',
+  '/nosotros': 'nosotros',
+  '/contacto': 'contacto'
+};
+
 function App() {
-  const [currentPage, setCurrentPage] = useState('inicio');
-  const [isTransitioning, setIsTransitioning] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const currentPage = pathToPage[location.pathname] ?? 'inicio';
 
   const handleNavigate = (page: string) => {
-    if (page === currentPage) return;
+    const targetPath = pageToPath[page as keyof typeof pageToPath];
+    if (!targetPath || targetPath === location.pathname) return;
 
-    setIsTransitioning(true);
-    setTimeout(() => {
-      setCurrentPage(page);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      setIsTransitioning(false);
-    }, 150);
+    navigate(targetPath);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   useEffect(() => {
@@ -26,31 +40,18 @@ function App() {
     document.title = `${pageTitle} - Agrimensura Gaguine`;
   }, [currentPage]);
 
-  const renderPage = () => {
-    switch (currentPage) {
-      case 'inicio':
-        return <Inicio onNavigate={handleNavigate} />;
-      case 'servicios':
-        return <Servicios />;
-      case 'nosotros':
-        return <Nosotros />;
-      case 'contacto':
-        return <Contacto />;
-      default:
-        return <Inicio onNavigate={handleNavigate} />;
-    }
-  };
-
   return (
     <div className="min-h-screen bg-[#F2F1DF]">
       <Header currentPage={currentPage} onNavigate={handleNavigate} />
 
-      <main
-        className={`transition-opacity duration-300 ${
-          isTransitioning ? 'opacity-0' : 'opacity-100'
-        }`}
-      >
-        {renderPage()}
+      <main className="transition-opacity duration-300 opacity-100">
+        <Routes>
+          <Route path="/" element={<Inicio onNavigate={handleNavigate} />} />
+          <Route path="/servicios" element={<Servicios />} />
+          <Route path="/nosotros" element={<Nosotros />} />
+          <Route path="/contacto" element={<Contacto />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
       </main>
 
       <footer className="bg-[#26240B] text-[#F2F1DF] py-8">
