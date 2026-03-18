@@ -11,11 +11,16 @@ export default function Nosotros() {
           </h1>
         </div>
 
-        <div className="bg-[#D9D8C7] rounded-lg shadow-lg p-8 mb-12">
-          <p className="text-[#26240B] text-lg leading-relaxed text-center max-w-4xl mx-auto">
-            Somos un estudio de Agrimensura con más de 30 años de trayectoria en la provincia de Córdoba.
-            Brindamos soluciones técnicas, legales y catastrales con compromiso, precisión y experiencia.
-            Atendemos en Córdoba y alrededores, de lunes a sábado de 08:00 a 20:00 hs.
+        <div className="bg-[#D9DAC7] rounded-lg shadow-lg p-8 mb-12 text-center">
+          <h3
+            className="inline-flex flex-col items-center text-sm text-[#26240B] tracking-widest mb-4"
+            style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 500 }}
+          >
+            <span>AGRIMENSURA GAGUINE</span>
+            <span className="mt-1 block h-[2px] w-full max-w-xs rounded-full bg-[#26240B]/55" />
+          </h3>
+          <p className="text-[#26240B] text-lg leading-relaxed max-w-4xl mx-auto">
+            Con más de 27 años de experiencia en Agrimensura, somos un estudio familiar que combina la trayectoria y el conocimiento con la energía de las nuevas generaciones. Nos dedicamos a brindar soluciones claras y efectivas para tus proyectos, acompañándote con un trato cercano, profesional y confiable. Te invitamos a conocer al equipo que hace todo esto posible
           </p>
         </div>
 
