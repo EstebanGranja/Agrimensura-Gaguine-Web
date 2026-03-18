@@ -7,14 +7,16 @@ interface InicioProps {
 
 export default function Inicio({ onNavigate }: InicioProps) {
   return (
-    <div className="min-h-[calc(100vh-4rem)] relative flex items-center justify-center">
+    <div className="min-h-[calc(100vh-4rem)] relative flex items-center justify-center mb-[-1px] md:mb-0">
       <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
             backgroundImage: `url(${campoBg})`,
           }}
       >
-        <div className="absolute inset-0 bg-[#26240B] bg-opacity-80" />
+        <div className="absolute inset-0 bg-[#26240B] bg-opacity-75" />
+        <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-b from-transparent to-[#26240B]" />
+        <div className="absolute inset-x-0 bottom-[-1px] h-[2px] bg-[#26240B] md:hidden" />
       </div>
 
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4 md:py-6 text-center">

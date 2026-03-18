@@ -7,9 +7,10 @@ interface ContactCardProps {
   link?: string;
   external?: boolean;
   compact?: boolean;
+  iconColor?: string;
 }
 
-export default function ContactCard({ icon: Icon, label, value, link, external, compact = false }: ContactCardProps) {
+export default function ContactCard({ icon: Icon, label, value, link, external, compact = false, iconColor = '#F2F1DF' }: ContactCardProps) {
   const cardClassName = compact
     ? 'bg-[#D9D8C7] rounded-lg p-4 shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1 flex flex-col items-center text-center'
     : 'bg-[#D9D8C7] rounded-lg p-6 shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1 flex flex-col items-center text-center';
@@ -29,7 +30,7 @@ export default function ContactCard({ icon: Icon, label, value, link, external, 
   const content = (
     <div className={cardClassName}>
       <div className={iconContainerClassName}>
-        <Icon size={compact ? 20 : 24} className="text-[#F2F1DF]" />
+        <Icon size={compact ? 20 : 24} style={{ color: iconColor }} />
       </div>
       <h3 className={titleClassName}>
         {label}

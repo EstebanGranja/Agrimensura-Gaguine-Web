@@ -38,6 +38,7 @@ export default function Contacto() {
       icon: Instagram,
       label: 'Instagram',
       value: '@agrimensuragaguine',
+      iconColor: '#E4405F',
       link: 'https://instagram.com/agrimensuragaguine',
       external: true
     },
@@ -45,6 +46,7 @@ export default function Contacto() {
       icon: Facebook,
       label: 'Facebook',
       value: 'Gaguine Agrimensura',
+      iconColor: '#1877F2',
       link: 'https://www.facebook.com/profile.php?id=100023081305087',
       external: true
     }
@@ -107,6 +109,7 @@ export default function Contacto() {
                 link={info.link}
                 external={info.external}
                 compact
+                iconColor={info.iconColor}
               />
             ))}
           </div>
