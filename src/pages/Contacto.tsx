@@ -12,8 +12,8 @@ export default function Contacto() {
     {
       icon: MessageCircle,
       label: 'WhatsApp',
-      value: '+54 9 351 540-7257',
-      link: 'https://wa.me/5493515407257',
+      value: '+54 9 351 716-0164',
+      link: 'https://wa.me/3517160164',
       external: true
     },
     {
@@ -66,7 +66,7 @@ export default function Contacto() {
             Estamos disponibles para responder tus consultas
           </p>
           <a
-            href="https://wa.me/5493515407257"
+            href="https://wa.me/3517160164"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-3 bg-[#1DA851] text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[#178C41] transition-all duration-300 transform hover:scale-105 shadow-lg"

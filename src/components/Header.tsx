@@ -64,7 +64,7 @@ export default function Header({ currentPage, onNavigate }: HeaderProps) {
           {/* Contenedor absoluto a la derecha para WhatsApp y menú móvil */}
           <div className="absolute right-0 top-1/2 -translate-y-1/2 flex items-center gap-2 z-10">
             <a
-              href="https://wa.me/5493515407257"
+              href="https://wa.me/3517160164"
               target="_blank"
               rel="noopener noreferrer"
               className="hidden md:flex items-center gap-2 bg-[#1DA851] text-white px-4 py-2 rounded-lg font-medium hover:bg-[#178C41] transition-all duration-300"

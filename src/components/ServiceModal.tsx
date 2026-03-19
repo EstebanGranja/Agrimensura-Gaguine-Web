@@ -97,7 +97,7 @@ export default function ServiceModal({ service, onClose }: ServiceModalProps) {
   };
 
   const whatsappMessage = `Hola, quiero consultar sobre el servicio de ${service.name}`;
-  const whatsappUrl = `https://wa.me/5493515407257?text=${encodeURIComponent(whatsappMessage)}`;
+  const whatsappUrl = `https://wa.me/3517160164?text=${encodeURIComponent(whatsappMessage)}`;
 
   return (
     <div

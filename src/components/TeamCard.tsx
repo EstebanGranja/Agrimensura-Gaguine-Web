@@ -1,4 +1,3 @@
-import { MessageCircle } from 'lucide-react';
 import { TeamMember } from '../data/team';
 
 interface TeamCardProps {
@@ -26,17 +25,6 @@ export default function TeamCard({ member }: TeamCardProps) {
           <p className="text-[#26240B] text-sm leading-relaxed">
             {member.bio}
           </p>
-        </div>
-        <div className="flex justify-end mt-4">
-          <a
-            href={member.whatsapp}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 bg-[#1DA851] text-white px-5 py-2 rounded-lg font-medium hover:bg-[#178C41] transition-all duration-300"
-          >
-            <MessageCircle size={18} />
-            Contactar
-          </a>
         </div>
       </div>
     </div>
