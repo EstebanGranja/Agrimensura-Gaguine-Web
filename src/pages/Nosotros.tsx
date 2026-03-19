@@ -20,7 +20,7 @@ export default function Nosotros() {
             <span className="mt-1 block h-[2px] w-full max-w-xs rounded-full bg-[#26240B]/55" />
           </h3>
           <p className="text-[#26240B] text-lg leading-relaxed max-w-4xl mx-auto">
-            Con más de 27 años de experiencia en Agrimensura, somos un estudio familiar que combina la trayectoria y el conocimiento con la energía de las nuevas generaciones. Nos dedicamos a brindar soluciones claras y efectivas para tus proyectos, acompañándote con un trato cercano, profesional y confiable. Te invitamos a conocer al equipo que hace todo esto posible
+            Somos un estudio familiar con más de 27 años de experiencia en Agrimensura. Combinamos trayectoria y conocimiento con la energía de las nuevas generaciones para ofrecer soluciones claras, confiables y adaptadas a cada proyecto. Te invitamos a conocer al equipo que hace todo esto posible
           </p>
         </div>
 

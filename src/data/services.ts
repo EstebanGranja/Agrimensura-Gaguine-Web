@@ -59,7 +59,7 @@ export const services: Service[] = [
     id: 'posesion',
     name: 'Mensura de Posesión',
     description: 'Acredita la ocupación real para iniciar un Juicio de Usucapión.',
-    fullDescription: 'La Mensura de Posesión es un trabajo técnico-jurídico realizado por el Ingeniero Agrimensor que documenta la posesión efectiva, continua, pública, pacífica y con ánimo de dueño de un inmueble. Es el primer paso indispensable para iniciar un Juicio de Usucapión (prescripción adquisitiva de dominio). El agrimensor releva el terreno ocupado, identifica construcciones y mejoras, releva colindancias, recopila testimonios, y confecciona un plano que refleja la situación posesoria actual. El plano se presenta ante la Dirección de Catastro y luego ante la justicia.',
+    fullDescription: 'La Mensura de Posesión es un trabajo técnico-jurídico que documenta la posesión efectiva y continua de un inmueble, siendo el primer paso para un Juicio de Usucapión. El agrimensor releva el terreno, construcciones y mejoras, y confecciona un plano que se presenta ante Catastro y la justicia para reflejar la situación posesoria.',
     image: mensuraPosesionImg,
     carouselImages: [
       mensuraPosesionImg,
@@ -71,7 +71,7 @@ export const services: Service[] = [
     id: 'relevamiento',
     name: 'Relevamiento Topográfico',
     description: 'Medición precisa tridimensional del terreno con GPS y estaciones totales para obras.',
-    fullDescription: 'El relevamiento topográfico es el proceso de medición y registro detallado de las características físicas del terreno: alturas, desniveles, construcciones existentes, vegetación, cursos de agua, y cualquier elemento presente. Utilizamos equipos GPS, estaciones totales y niveles digitales para obtener datos tridimensionales precisos. El resultado es un plano topográfico que sirve como base para el diseño de proyectos, cálculo de movimientos de suelo, regularizaciones dominiales y estudios de impacto.',
+    fullDescription: 'El relevamiento topográfico es la medición detallada de las características físicas del terreno, como alturas, desniveles y construcciones. Usando equipos GPS y estaciones totales, generamos un plano preciso que sirve de base para el diseño de proyectos, cálculo de movimientos de suelo y regularizaciones.',
     image: relevamientoTopograficoImg,
     carouselImages: [
       relevamientoTopograficoImg,
@@ -83,7 +83,7 @@ export const services: Service[] = [
     id: 'amojonamiento',
     name: 'Amojonamiento',
     description: 'Colocación de mojones en el terreno para materializar los límites del inmueble.',
-    fullDescription: 'El amojonamiento consiste en la colocación física de mojones (hitos de hormigón, hierro u otro material durable) en los vértices y puntos característicos de los límites de una parcela. Estos mojones materializan en el terreno los límites jurídicos del inmueble establecidos en la mensura. El proceso incluye la determinación precisa de las coordenadas de los vértices, excavación, colocación de los mojones conforme a normativa, y documentación fotográfica. Es un acto fundamental para evitar conflictos de límites entre propiedades colindantes.',
+    fullDescription: 'El amojonamiento consiste en la colocación de mojones (hitos de hormigón o hierro) en los vértices de una parcela para materializar sus límites jurídicos. Este proceso incluye la determinación precisa de coordenadas y la documentación fotográfica, siendo fundamental para evitar conflictos de límites con propiedades vecinas.',
     image: amojonamientoImg,
     carouselImages: [
       amojonamientoImg,
@@ -96,7 +96,7 @@ export const services: Service[] = [
     id: 'certificado',
     name: 'Certificado de Amojonamiento',
     description: 'Acredita la correcta colocación de mojones en la parcela.',
-    fullDescription: 'El Certificado de Amojonamiento es un documento técnico-legal emitido por el Ingeniero Agrimensor que acredita que los mojones han sido colocados correctamente en el terreno, materializando los límites de la parcela conforme al plano de mensura aprobado. Incluye fotografías de cada mojón, descripción de su ubicación, coordenadas, y firma del profesional. Este certificado es requerido frecuentemente para tramitar escrituras, créditos hipotecarios, y regularizaciones dominiales, ya que garantiza que el inmueble está correctamente delimitado.',
+    fullDescription: 'El Certificado de Amojonamiento es un documento técnico-legal que acredita la correcta colocación de los mojones de una parcela, conforme al plano de mensura. Incluye fotografías y la ubicación de cada mojón, y es requerido para trámites de escrituras, créditos hipotecarios y regularizaciones, garantizando que el inmueble está bien delimitado.',
     image: certificadoAmojonamientoImg,
     carouselImages: [
       certificadoAmojonamientoImg,
@@ -109,7 +109,7 @@ export const services: Service[] = [
     id: 'vep',
     name: 'VEP (Verificación de Estado Parcelario)',
     description: 'Verifica la concordancia entre el estado catastral y la realidad del inmueble.',
-    fullDescription: 'La Verificación de Estado Parcelario (VEP) es un trámite técnico-catastral que acredita la concordancia entre el estado parcelario registrado en Catastro y la realidad del inmueble. Incluye la verificación de límites, superficies, edificaciones, nomenclatura catastral y situación jurídica. Es requisito obligatorio en la provincia de Córdoba para tramitar escrituras, subdivisiones, uniones de parcelas y otros actos que modifiquen el dominio. El profesional agrimensor confecciona el informe y lo presenta ante la Dirección de Catastro.',
+        fullDescription: 'La Verificación del Estado Parcelario (VEP) es un trámite que actualiza la información de una parcela en el Catastro. Consiste en verificar que los límites, medidas y edificaciones del inmueble coincidan con los registros existentes. Es un requisito legal para cualquier acto de transmisión o modificación de derechos reales sobre un inmueble, asegurando la transparencia y seguridad jurídica de la operación.',
     image: vepImg,
     carouselImages: [
       vepImg
@@ -120,7 +120,7 @@ export const services: Service[] = [
     id: 'replanteo',
     name: 'Replanteo de Obras',
     description: 'Materializa en campo los ejes y niveles del proyecto para inicio de obras.',
-    fullDescription: 'El replanteo de obras consiste en la materialización en el terreno de los puntos, ejes, niveles y geometrías definidos en el proyecto de ingeniería o arquitectura. Utilizamos equipos de alta precisión (estaciones totales, niveles, GPS RTK) para garantizar que la obra se ejecute conforme a plano. Es un servicio fundamental antes del inicio de cualquier construcción, ya que permite ubicar con exactitud dónde se excavará, construirá o instalará cada elemento estructural.',
+        fullDescription: 'El replanteo de obras consiste en trasladar al terreno los puntos y ejes definidos en los planos de un proyecto de construcción. Utilizando estaciones totales y GPS de alta precisión, materializamos la ubicación exacta de cimientos, columnas, y otros elementos estructurales, asegurando que la obra se construya según las especificaciones del diseño.',
     image: replanteoObrasImg,
     carouselImages: [
       replanteoObrasImg,
@@ -135,7 +135,7 @@ export const services: Service[] = [
     id: 'subdivision',
     name: 'Subdivisión / Unión de Parcelas',
     description: 'Procedimiento técnico-catastral para dividir o unificar lotes según normativa.',
-    fullDescription: 'La subdivisión o unión de parcelas es el procedimiento técnico-legal mediante el cual se modifica la configuración parcelaria de un inmueble. La subdivisión permite dividir una parcela en dos o más lotes independientes, mientras que la unión unifica dos o más parcelas en una sola. Requiere confección de plano de mensura, visación en la Dirección de Catastro, inscripción en el Registro General de la Propiedad, y cumplimiento de normativas urbanísticas municipales. Es fundamental para desarrollos inmobiliarios, herencias o reagrupamientos prediales.',
+    fullDescription: 'La subdivisión de parcelas es el proceso para dividir un inmueble en dos o más lotes independientes, cada uno con su propia matrícula. Este trámite incluye la creación de un plano de subdivisión que cumple con las normativas locales y se inscribe en el Catastro, permitiendo la venta o transferencia individual de los nuevos lotes.',
     image: subUnionParcelasImg,
     carouselImages: [
       subUnionParcelasImg,
@@ -148,7 +148,7 @@ export const services: Service[] = [
     id: 'planialtimetria',
     name: 'Planialtimetría',
     description: 'Relevamiento tridimensional para obtener curvas de nivel y perfiles de proyecto.',
-    fullDescription: 'La planialtimetría es un relevamiento topográfico integral que combina la medición planimétrica (coordenadas X, Y) y altimétrica (elevaciones, cotas Z) del terreno. Permite obtener curvas de nivel, perfiles longitudinales y transversales, cálculo de volúmenes, pendientes y diseño de drenajes. Es esencial para proyectos de arquitectura, ingeniería civil, agronomía, planificación urbana y obras de infraestructura. El resultado es un plano con información tridimensional completa que permite optimizar el diseño y prever movimientos de suelo.',
+        fullDescription: 'La planialtimetría combina la planimetría (medición de proyecciones horizontales) y la altimetría (medición de alturas y desniveles) en un solo plano. Este plano proporciona una representación tridimensional completa del terreno, incluyendo curvas de nivel, y es esencial para proyectos de ingeniería, arquitectura y estudios hidráulicos que requieren un conocimiento detallado del relieve.',
     image: planialtimetriaImg,
     carouselImages: [
       planialtimetriaImg,

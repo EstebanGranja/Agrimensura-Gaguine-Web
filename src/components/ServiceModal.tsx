@@ -108,16 +108,7 @@ export default function ServiceModal({ service, onClose }: ServiceModalProps) {
         className="bg-[#F2F1DF] rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto my-8"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="sticky top-0 bg-[#F2F1DF] z-10 px-3 py-2 border-b border-[#D9D8C7] flex justify-end items-center">
-          <button
-            onClick={onClose}
-            className="p-1.5 hover:bg-[#D9D8C7] rounded-full transition-all duration-300"
-          >
-            <X size={24} className="text-[#26240B]" />
-          </button>
-        </div>
-
-        <div className="p-6 pt-3">
+        <div className="p-6">
           <div className="mb-6 md:max-w-2xl md:mx-auto">
             <div className="relative bg-[#F2F1DF] rounded-md overflow-visible">
               <button
@@ -156,13 +147,13 @@ export default function ServiceModal({ service, onClose }: ServiceModalProps) {
             </div>
 
             {service.carouselImages.length > 1 && (
-              <div className="mt-3 flex flex-wrap justify-center gap-2">
+              <div className="mt-3 flex flex-wrap justify-center gap-1">
                 {service.carouselImages.map((image, index) => (
                   <button
                     key={index}
                     onClick={() => goToImage(index)}
                     aria-label={`Ver imagen ${index + 1}`}
-                    className={`w-14 h-14 rounded-md overflow-hidden border-2 transition-all duration-300 ${
+                    className={`w-12 h-12 rounded-md overflow-hidden border-2 transition-all duration-300 ${
                       index === currentImageIndex
                         ? 'border-[#26240B] ring-1 ring-[#26240B]/30'
                         : 'border-[#D9D8C7] hover:border-[#26240B]/50'

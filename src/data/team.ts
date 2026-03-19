@@ -34,7 +34,7 @@ export const team: TeamMember[] = [
     name: 'Francisco Joaquín Gaguine Granja',
     title: 'Estudiante de Ingeniería en Agrimensura',
     bio: 'Francisco, es estudiante de la carrera Ingeniería en Agrimensura, en la Facultad de Ciencias Exactas Físicas y Naturales de la Universidad Nacional de Córdoba. Se encuentra cursando cuarto año. Actualmente, es ayudante de la empresa, aportando sus conocimientos en topografía, marco legal y confección de planos en AutoCAD.',
-    whatsapp: 'https://wa.me/5493515407257',
+    whatsapp: 'https://wa.me/3517160164',
     image: franciscoImg
   }
 ];
