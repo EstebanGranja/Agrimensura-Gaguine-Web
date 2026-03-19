@@ -18,7 +18,7 @@ export const team: TeamMember[] = [
     name: 'César David Gaguine',
     title: 'Ingeniero Agrimensor',
     bio: 'César David Gaguine es Ingeniero Agrimensor graduado de la Facultad de Ciencias Exactas, Físicas y Naturales de la Universidad Nacional de Córdoba en el año 1993. Además de su vasta trayectoria en el campo de la Agrimensura es Docente de Nivel Secundario desde hace más de 32 años. Por su capacidad y conocimientos legales es muy solicitado como perito de parte y como asesor en litigios relacionados con la tenencia de la tierra.',
-    whatsapp: 'https://wa.me/5493515407257',
+    whatsapp: 'https://wa.me/5493515401034',
     image: cesarImg
   },
   {
