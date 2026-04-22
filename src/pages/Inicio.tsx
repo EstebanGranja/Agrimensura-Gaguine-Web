@@ -65,7 +65,7 @@ export default function Inicio({ onNavigate }: InicioProps) {
 
       <section className="bg-[#26240B] pt-8 md:pt-12 pb-12 md:pb-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-center">
-          <div className="bg-[#D9D8C7] rounded-xl p-5 sm:p-8 flex flex-col items-center w-full max-w-2xl lg:max-w-[620px]">
+          <div className="bg-[#D9D8C7] rounded-xl p-5 sm:p-8 flex flex-col items-center w-full max-w-xl lg:max-w-[560px]">
             <div className="flex flex-col items-center mb-6">
               <h3 className="text-2xl font-bold text-[#26240B] text-center pb-1">
                 Últimas publicaciones
