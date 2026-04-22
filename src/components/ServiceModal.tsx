@@ -40,6 +40,38 @@ export default function ServiceModal({ service, onClose }: ServiceModalProps) {
   }, []);
 
   useEffect(() => {
+    const body = document.body;
+    const html = document.documentElement;
+    const scrollY = window.scrollY;
+
+    const originalBodyStyles = {
+      overflow: body.style.overflow,
+      position: body.style.position,
+      top: body.style.top,
+      width: body.style.width,
+      overscrollBehavior: body.style.overscrollBehavior
+    };
+    const originalHtmlOverscroll = html.style.overscrollBehavior;
+
+    body.style.overflow = 'hidden';
+    body.style.position = 'fixed';
+    body.style.top = `-${scrollY}px`;
+    body.style.width = '100%';
+    body.style.overscrollBehavior = 'none';
+    html.style.overscrollBehavior = 'none';
+
+    return () => {
+      body.style.overflow = originalBodyStyles.overflow;
+      body.style.position = originalBodyStyles.position;
+      body.style.top = originalBodyStyles.top;
+      body.style.width = originalBodyStyles.width;
+      body.style.overscrollBehavior = originalBodyStyles.overscrollBehavior;
+      html.style.overscrollBehavior = originalHtmlOverscroll;
+      window.scrollTo(0, scrollY);
+    };
+  }, []);
+
+  useEffect(() => {
     if (!isFullscreenOpen) return;
 
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -112,13 +144,13 @@ export default function ServiceModal({ service, onClose }: ServiceModalProps) {
 
   return (
     <div
-      className={`fixed inset-0 bg-black flex items-center justify-center z-50 p-4 overflow-y-auto transition-opacity duration-300 ease-out motion-reduce:transition-none ${
+      className={`fixed inset-x-0 top-0 h-[100dvh] bg-black flex items-center justify-center z-50 p-4 overflow-y-auto overscroll-y-contain transition-opacity duration-300 ease-out motion-reduce:transition-none ${
         isModalVisible ? 'bg-opacity-60 opacity-100' : 'bg-opacity-0 opacity-0'
       }`}
       onClick={onClose}
     >
       <div
-        className={`bg-[#F2F1DF] rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto my-8 transform-gpu transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none ${
+        className={`bg-[#F2F1DF] rounded-lg max-w-4xl w-full max-h-[90dvh] overflow-y-auto my-8 transform-gpu transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none ${
           isModalVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-3 scale-[0.985]'
         }`}
         onClick={(e) => e.stopPropagation()}
@@ -218,7 +250,7 @@ export default function ServiceModal({ service, onClose }: ServiceModalProps) {
 
         {isFullscreenOpen && (
           <div
-            className="fixed inset-0 z-[70] bg-black/95 p-3 sm:p-6"
+            className="fixed inset-x-0 top-0 h-[100dvh] z-[70] bg-black/95 p-3 sm:p-6"
             onClick={closeFullscreen}
             role="dialog"
             aria-modal="true"
