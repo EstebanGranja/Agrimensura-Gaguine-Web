@@ -5,6 +5,7 @@ export interface TeamMember {
   bio: string;
   whatsapp: string;
   image: string;
+  linkedin?: string;
 }
 
 // Importar imágenes como módulos para que Vite procese las rutas correctamente
@@ -32,9 +33,10 @@ export const team: TeamMember[] = [
   {
     id: 'francisco',
     name: 'Francisco Joaquín Gaguine Granja',
-    title: 'Estudiante de Ingeniería en Agrimensura',
-    bio: 'Francisco, es estudiante de la carrera Ingeniería en Agrimensura, en la Facultad de Ciencias Exactas Físicas y Naturales de la Universidad Nacional de Córdoba. Se encuentra cursando cuarto año. Actualmente, es ayudante de la empresa, aportando sus conocimientos en topografía, marco legal y confección de planos en AutoCAD.',
+    title: 'Ingeniero Agrimensor',
+    bio: 'Francisco Gaguine es Ingeniero Agrimensor egresado en 2024 de la Facultad de Ciencias Exactas, Físicas y Naturales de la Universidad Nacional de Córdoba. Actualmente forma parte fundamental de Agrimensura Gaguine, participando activamente en el desarrollo y ejecución de proyectos. Cuenta con experiencia en relevamientos topográficos, interpretación del marco legal vigente y confección de planos mediante herramientas como AutoCAD. Su incorporación al equipo aporta una mirada actualizada y técnica, contribuyendo al crecimiento y la calidad de los servicios que brinda la empresa.',
     whatsapp: 'https://wa.me/3517160164',
-    image: franciscoImg
+    image: franciscoImg,
+    linkedin: 'https://www.linkedin.com/in/francisco-joaqu%C3%ADn-gaguine-granja-440872223/'
   }
 ];

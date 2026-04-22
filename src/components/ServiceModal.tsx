@@ -11,6 +11,7 @@ interface ServiceModalProps {
 export default function ServiceModal({ service, onClose }: ServiceModalProps) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isImageVisible, setIsImageVisible] = useState(true);
+  const [isModalVisible, setIsModalVisible] = useState(false);
   const [isFullscreenOpen, setIsFullscreenOpen] = useState(false);
   const transitionTimeoutRef = useRef<number | null>(null);
   const fadeDurationMs = 180;
@@ -25,6 +26,16 @@ export default function ServiceModal({ service, onClose }: ServiceModalProps) {
   useEffect(() => {
     return () => {
       clearTransitionTimeout();
+    };
+  }, []);
+
+  useEffect(() => {
+    const animationFrame = window.requestAnimationFrame(() => {
+      setIsModalVisible(true);
+    });
+
+    return () => {
+      window.cancelAnimationFrame(animationFrame);
     };
   }, []);
 
@@ -101,11 +112,15 @@ export default function ServiceModal({ service, onClose }: ServiceModalProps) {
 
   return (
     <div
-      className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 p-4 overflow-y-auto"
+      className={`fixed inset-0 bg-black flex items-center justify-center z-50 p-4 overflow-y-auto transition-opacity duration-300 ease-out motion-reduce:transition-none ${
+        isModalVisible ? 'bg-opacity-60 opacity-100' : 'bg-opacity-0 opacity-0'
+      }`}
       onClick={onClose}
     >
       <div
-        className="bg-[#F2F1DF] rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto my-8"
+        className={`bg-[#F2F1DF] rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto my-8 transform-gpu transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none ${
+          isModalVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-3 scale-[0.985]'
+        }`}
         onClick={(e) => e.stopPropagation()}
       >
         <div className="p-6">
@@ -120,8 +135,10 @@ export default function ServiceModal({ service, onClose }: ServiceModalProps) {
                 <img
                   src={service.carouselImages[currentImageIndex]}
                   alt={`${service.name} ${currentImageIndex + 1}`}
-                  className={`w-full h-60 md:h-72 object-contain rounded-md transform-gpu transition-all duration-300 ease-in-out opacity-95 cursor-zoom-in ${
-                    isImageVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-2'
+                  className={`w-full h-60 md:h-72 object-contain rounded-md transform-gpu transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none opacity-95 cursor-zoom-in ${
+                    isImageVisible && isModalVisible
+                      ? 'opacity-100 translate-x-0 translate-y-0 scale-100'
+                      : 'opacity-0 translate-x-2 translate-y-1 scale-[1.015]'
                   }`}
                 />
               </button>

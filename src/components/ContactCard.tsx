@@ -12,8 +12,8 @@ interface ContactCardProps {
 
 export default function ContactCard({ icon: Icon, label, value, link, external, compact = false, iconColor = '#F2F1DF' }: ContactCardProps) {
   const cardClassName = compact
-    ? 'bg-[#D9D8C7] rounded-lg p-4 shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1 flex flex-col items-center text-center'
-    : 'bg-[#D9D8C7] rounded-lg p-6 shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1 flex flex-col items-center text-center';
+    ? 'bg-[#D9D8C7] rounded-lg p-4 shadow-md transform-gpu transition-all duration-300 hover:shadow-xl hover:-translate-y-1.5 hover:scale-[1.015] flex flex-col items-center text-center'
+    : 'bg-[#D9D8C7] rounded-lg p-6 shadow-md transform-gpu transition-all duration-300 hover:shadow-xl hover:-translate-y-1.5 hover:scale-[1.015] flex flex-col items-center text-center';
 
   const iconContainerClassName = compact
     ? 'w-10 h-10 bg-[#26240B] rounded-full flex items-center justify-center mb-3'
@@ -24,7 +24,7 @@ export default function ContactCard({ icon: Icon, label, value, link, external, 
     : 'font-bold text-[#26240B] text-lg mb-2';
 
   const valueClassName = compact
-    ? 'text-[#26240B] text-xs'
+    ? 'text-[#26240B] text-sm'
     : 'text-[#26240B] text-sm';
 
   const content = (
