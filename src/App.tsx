@@ -56,7 +56,7 @@ function App() {
         </Routes>
       </main>
 
-      <footer className="bg-[#26240B] text-[#F2F1DF] py-6 md:py-8">
+      <footer className="bg-[#26240B] border-t border-[#D9D8C7]/35 text-[#F2F1DF] py-6 md:py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
           <div className="flex flex-col items-center text-center gap-3 md:flex-row md:items-center md:justify-between">
             <div className="flex flex-col items-center gap-1.5 md:flex-row md:items-center md:gap-3 md:text-left md:pl-6 lg:pl-10">
@@ -68,7 +68,7 @@ function App() {
               <div className="flex flex-col items-center md:items-start leading-none md:leading-tight">
                 <p className="font-semibold text-lg md:mt-0.5">Agrimensura Gaguine</p>
                 <p className="text-sm md:text-xs text-[#D9D8C7]">Córdoba, Argentina</p>
-                <p className="text-sm md:text-xs text-[#D9D8C7]">0351-4750563</p>
+                <p className="text-sm md:text-xs text-[#D9D8C7]">3517160164</p>
               </div>
             </div>
 

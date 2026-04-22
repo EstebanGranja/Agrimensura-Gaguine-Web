@@ -18,7 +18,7 @@ export const team: TeamMember[] = [
     id: 'cesar',
     name: 'César David Gaguine',
     title: 'Ingeniero Agrimensor',
-    bio: 'César David Gaguine es Ingeniero Agrimensor graduado de la Facultad de Ciencias Exactas, Físicas y Naturales de la Universidad Nacional de Córdoba en el año 1993. Además de su vasta trayectoria en el campo de la Agrimensura es Docente de Nivel Secundario desde hace más de 32 años. Por su capacidad y conocimientos legales es muy solicitado como perito de parte y como asesor en litigios relacionados con la tenencia de la tierra.',
+    bio: 'Ingeniero Agrimensor egresado de la Facultad de Ciencias Exactas, Físicas y Naturales de la Universidad Nacional de Córdoba en el año 1993. Cuenta con una amplia trayectoria en el ejercicio de la agrimensura, con sólida experiencia en trabajos de campo, verificación de límites y resolución de problemáticas vinculadas a la propiedad de la tierra. Su profundo conocimiento del marco legal lo posiciona como referente en la materia, siendo frecuentemente convocado como perito de parte y asesor en litigios relacionados con la tenencia y delimitación de inmuebles.',
     whatsapp: 'https://wa.me/3517160164',
     image: cesarImg
   },
@@ -26,7 +26,7 @@ export const team: TeamMember[] = [
     id: 'maria',
     name: 'María de los Ángeles Granja',
     title: 'Martillero, Corredor Público y Corredor Inmobiliario',
-    bio: 'Maria de los Angeles Granja es Martillero, Corredor Público y Corredor Inmobiliario. Siendo una de las fundadoras del Estudio, nunca deja de realizar cursos vinculados a la actividad catastral, legal y registral: "Diplomatura Superior en Catastro", "La Posesión y los Remedios legales que genera", "Organización del Trabajo", "El Catastro post COVID 19 Lecciones y alternativas para Latinoamérica", etc. Es quien se encarga de la articulación de todos los trámites necesarios para la visación de trabajos de Agrimensura, coordinando con Profesionales y organismos públicos y privados.',
+    bio: 'Martillera y Corredora Pública con un rol central en la gestión administrativa del estudio. Se encarga de la tramitación integral de trabajos de agrimensura, coordinando presentaciones de planos y gestionando expedientes ante organismos públicos y municipalidades. Cuenta con formación continua en áreas catastrales, legales y registrales, lo que le permite desenvolverse con eficiencia en la articulación entre profesionales y distintas reparticiones, asegurando que cada trámite avance de manera ordenada y sin demoras.',
     whatsapp: 'https://wa.me/3517160164',
     image: mariaImg
   },
@@ -34,7 +34,7 @@ export const team: TeamMember[] = [
     id: 'francisco',
     name: 'Francisco Joaquín Gaguine Granja',
     title: 'Ingeniero Agrimensor',
-    bio: 'Francisco Gaguine es Ingeniero Agrimensor egresado en 2024 de la Facultad de Ciencias Exactas, Físicas y Naturales de la Universidad Nacional de Córdoba. Actualmente forma parte fundamental de Agrimensura Gaguine, participando activamente en el desarrollo y ejecución de proyectos. Cuenta con experiencia en relevamientos topográficos, interpretación del marco legal vigente y confección de planos mediante herramientas como AutoCAD. Su incorporación al equipo aporta una mirada actualizada y técnica, contribuyendo al crecimiento y la calidad de los servicios que brinda la empresa.',
+    bio: 'Ingeniero Agrimensor egresado en 2024 de la Facultad de Ciencias Exactas, Físicas y Naturales de la Universidad Nacional de Córdoba. Trabajo en el desarrollo y ejecución de proyectos de agrimensura en la provincia de Córdoba, con experiencia en relevamientos topográficos, verificación de límites y confección de planos mediante herramientas como AutoCAD. Cuento con formación técnica actualizada y un enfoque preciso en cada trabajo, combinando conocimiento del marco legal vigente con práctica en campo para brindar resultados confiables.',
     whatsapp: 'https://wa.me/3517160164',
     image: franciscoImg,
     linkedin: 'https://www.linkedin.com/in/francisco-joaqu%C3%ADn-gaguine-granja-440872223/'
