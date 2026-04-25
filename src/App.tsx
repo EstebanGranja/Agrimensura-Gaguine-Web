@@ -74,7 +74,7 @@ function App() {
 
             <div className="flex items-center gap-4 md:pr-6 lg:pr-10">
               <a
-                href="https://www.instagram.com/"
+                href="https://instagram.com/agrimensuragaguine"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"
@@ -83,7 +83,7 @@ function App() {
                 <Instagram size={22} />
               </a>
               <a
-                href="https://www.facebook.com/"
+                href="https://www.facebook.com/profile.php?id=100023081305087"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Facebook"
