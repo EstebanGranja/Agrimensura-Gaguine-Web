@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 import whatsappLogo from '../public/images/whatsapp.png';
 import { Service } from '../data/services';
@@ -15,6 +15,13 @@ export default function ServiceModal({ service, onClose }: ServiceModalProps) {
   const [isFullscreenOpen, setIsFullscreenOpen] = useState(false);
   const transitionTimeoutRef = useRef<number | null>(null);
   const fadeDurationMs = 180;
+  const galleryImages = useMemo(
+    () => Array.from(new Set(service.carouselImages.slice(1))),
+    [service.carouselImages]
+  );
+  const hasGalleryImages = galleryImages.length > 0;
+  const hasMultipleGalleryImages = galleryImages.length > 1;
+  const displayedImage = hasGalleryImages ? galleryImages[currentImageIndex] : service.image;
 
   const clearTransitionTimeout = () => {
     if (transitionTimeoutRef.current !== null) {
@@ -72,7 +79,7 @@ export default function ServiceModal({ service, onClose }: ServiceModalProps) {
   }, []);
 
   useEffect(() => {
-    if (!isFullscreenOpen) return;
+    if (!isFullscreenOpen || !hasGalleryImages) return;
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
@@ -80,15 +87,15 @@ export default function ServiceModal({ service, onClose }: ServiceModalProps) {
         return;
       }
 
-      if (event.key === 'ArrowRight') {
+      if (event.key === 'ArrowRight' && hasMultipleGalleryImages) {
         const nextIndex =
-          currentImageIndex === service.carouselImages.length - 1 ? 0 : currentImageIndex + 1;
+          currentImageIndex === galleryImages.length - 1 ? 0 : currentImageIndex + 1;
         changeImage(nextIndex);
       }
 
-      if (event.key === 'ArrowLeft') {
+      if (event.key === 'ArrowLeft' && hasMultipleGalleryImages) {
         const nextIndex =
-          currentImageIndex === 0 ? service.carouselImages.length - 1 : currentImageIndex - 1;
+          currentImageIndex === 0 ? galleryImages.length - 1 : currentImageIndex - 1;
         changeImage(nextIndex);
       }
     };
@@ -97,29 +104,54 @@ export default function ServiceModal({ service, onClose }: ServiceModalProps) {
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [isFullscreenOpen, currentImageIndex, service.carouselImages.length]);
+  }, [
+    isFullscreenOpen,
+    currentImageIndex,
+    galleryImages.length,
+    hasGalleryImages,
+    hasMultipleGalleryImages
+  ]);
+
+  useEffect(() => {
+    if (!hasGalleryImages) {
+      setCurrentImageIndex(0);
+      setIsFullscreenOpen(false);
+      return;
+    }
+
+    if (currentImageIndex > galleryImages.length - 1) {
+      setCurrentImageIndex(0);
+    }
+  }, [hasGalleryImages, currentImageIndex, galleryImages.length]);
 
   const changeImage = (nextIndex: number) => {
-    if (nextIndex === currentImageIndex) return;
+    if (!hasGalleryImages) return;
+
+    const normalizedIndex =
+      ((nextIndex % galleryImages.length) + galleryImages.length) % galleryImages.length;
+
+    if (normalizedIndex === currentImageIndex) return;
 
     clearTransitionTimeout();
     setIsImageVisible(false);
 
     transitionTimeoutRef.current = window.setTimeout(() => {
-      setCurrentImageIndex(nextIndex);
+      setCurrentImageIndex(normalizedIndex);
       setIsImageVisible(true);
     }, fadeDurationMs);
   };
 
   const nextImage = () => {
-    const nextIndex =
-      currentImageIndex === service.carouselImages.length - 1 ? 0 : currentImageIndex + 1;
+    if (!hasGalleryImages) return;
+
+    const nextIndex = currentImageIndex === galleryImages.length - 1 ? 0 : currentImageIndex + 1;
     changeImage(nextIndex);
   };
 
   const prevImage = () => {
-    const nextIndex =
-      currentImageIndex === 0 ? service.carouselImages.length - 1 : currentImageIndex - 1;
+    if (!hasGalleryImages) return;
+
+    const nextIndex = currentImageIndex === 0 ? galleryImages.length - 1 : currentImageIndex - 1;
     changeImage(nextIndex);
   };
 
@@ -128,6 +160,8 @@ export default function ServiceModal({ service, onClose }: ServiceModalProps) {
   };
 
   const openFullscreen = (index?: number) => {
+    if (!hasGalleryImages) return;
+
     if (typeof index === 'number' && index !== currentImageIndex) {
       setCurrentImageIndex(index);
       setIsImageVisible(true);
@@ -158,24 +192,36 @@ export default function ServiceModal({ service, onClose }: ServiceModalProps) {
         <div className="p-6">
           <div className="mb-6 md:max-w-2xl md:mx-auto">
             <div className="relative bg-[#F2F1DF] rounded-md overflow-visible">
-              <button
-                type="button"
-                onClick={() => openFullscreen()}
-                className="w-full focus:outline-none"
-                aria-label={`Abrir ${service.name} en pantalla completa`}
-              >
+              {hasGalleryImages ? (
+                <button
+                  type="button"
+                  onClick={() => openFullscreen()}
+                  className="w-full focus:outline-none"
+                  aria-label={`Abrir ${service.name} en pantalla completa`}
+                >
+                  <img
+                    src={displayedImage}
+                    alt={`${service.name} ${currentImageIndex + 1}`}
+                    className={`w-full h-60 md:h-72 object-contain rounded-md transform-gpu transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none opacity-95 cursor-zoom-in ${
+                      isImageVisible && isModalVisible
+                        ? 'opacity-100 translate-x-0 translate-y-0 scale-100'
+                        : 'opacity-0 translate-x-2 translate-y-1 scale-[1.015]'
+                    }`}
+                  />
+                </button>
+              ) : (
                 <img
-                  src={service.carouselImages[currentImageIndex]}
-                  alt={`${service.name} ${currentImageIndex + 1}`}
-                  className={`w-full h-60 md:h-72 object-contain rounded-md transform-gpu transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none opacity-95 cursor-zoom-in ${
+                  src={displayedImage}
+                  alt={`${service.name} icono`}
+                  className={`w-full h-60 md:h-72 object-contain rounded-md transform-gpu transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none opacity-95 ${
                     isImageVisible && isModalVisible
                       ? 'opacity-100 translate-x-0 translate-y-0 scale-100'
                       : 'opacity-0 translate-x-2 translate-y-1 scale-[1.015]'
                   }`}
                 />
-              </button>
+              )}
 
-              {service.carouselImages.length > 1 && (
+              {hasMultipleGalleryImages && (
                 <>
                   <button
                     onClick={prevImage}
@@ -195,9 +241,9 @@ export default function ServiceModal({ service, onClose }: ServiceModalProps) {
               )}
             </div>
 
-            {service.carouselImages.length > 1 && (
+            {hasMultipleGalleryImages && (
               <div className="mt-3 flex flex-wrap justify-center gap-1">
-                {service.carouselImages.map((image, index) => (
+                {galleryImages.map((image, index) => (
                   <button
                     key={index}
                     onClick={() => goToImage(index)}
@@ -247,59 +293,62 @@ export default function ServiceModal({ service, onClose }: ServiceModalProps) {
             </button>
           </div>
         </div>
-
-        {isFullscreenOpen && (
-          <div
-            className="fixed inset-x-0 top-0 h-[100dvh] z-[70] bg-black/95 p-3 sm:p-6"
-            onClick={closeFullscreen}
-            role="dialog"
-            aria-modal="true"
-            aria-label={`Vista completa de ${service.name}`}
-          >
-            <div
-              className="relative w-full h-full flex items-center justify-center"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <button
-                type="button"
-                onClick={closeFullscreen}
-                className="absolute top-2 right-2 sm:top-4 sm:right-4 bg-[#F2F1DF] text-[#26240B] p-2 rounded-full hover:scale-105 transition-all duration-200 z-10"
-                aria-label="Cerrar imagen"
-              >
-                <X size={24} />
-              </button>
-
-              {service.carouselImages.length > 1 && (
-                <>
-                  <button
-                    type="button"
-                    onClick={prevImage}
-                    className="absolute left-1 sm:left-4 top-1/2 -translate-y-1/2 bg-[#F2F1DF]/90 text-[#26240B] p-2 sm:p-3 rounded-full hover:bg-[#F2F1DF] transition-all duration-200"
-                    aria-label="Imagen anterior"
-                  >
-                    <ChevronLeft size={26} />
-                  </button>
-
-                  <button
-                    type="button"
-                    onClick={nextImage}
-                    className="absolute right-1 sm:right-4 top-1/2 -translate-y-1/2 bg-[#F2F1DF]/90 text-[#26240B] p-2 sm:p-3 rounded-full hover:bg-[#F2F1DF] transition-all duration-200"
-                    aria-label="Imagen siguiente"
-                  >
-                    <ChevronRight size={26} />
-                  </button>
-                </>
-              )}
-
-              <img
-                src={service.carouselImages[currentImageIndex]}
-                alt={`${service.name} en pantalla completa ${currentImageIndex + 1}`}
-                className="max-w-[94vw] max-h-[90vh] object-contain rounded-md"
-              />
-            </div>
-          </div>
-        )}
       </div>
+
+      {isFullscreenOpen && hasGalleryImages && (
+        <div
+          className="fixed inset-0 z-[80] bg-black/95 p-3 sm:p-6 overflow-hidden overscroll-none"
+          onClick={(event) => {
+            event.stopPropagation();
+            closeFullscreen();
+          }}
+          role="dialog"
+          aria-modal="true"
+          aria-label={`Vista completa de ${service.name}`}
+        >
+          <div
+            className="relative w-full h-full flex items-center justify-center"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              type="button"
+              onClick={closeFullscreen}
+              className="absolute top-2 right-2 sm:top-4 sm:right-4 bg-[#F2F1DF] text-[#26240B] p-2 rounded-full hover:scale-105 transition-all duration-200 z-10"
+              aria-label="Cerrar imagen"
+            >
+              <X size={24} />
+            </button>
+
+            {hasMultipleGalleryImages && (
+              <>
+                <button
+                  type="button"
+                  onClick={prevImage}
+                  className="absolute left-1 sm:left-4 top-1/2 -translate-y-1/2 bg-[#F2F1DF]/90 text-[#26240B] p-2 sm:p-3 rounded-full hover:bg-[#F2F1DF] transition-all duration-200"
+                  aria-label="Imagen anterior"
+                >
+                  <ChevronLeft size={26} />
+                </button>
+
+                <button
+                  type="button"
+                  onClick={nextImage}
+                  className="absolute right-1 sm:right-4 top-1/2 -translate-y-1/2 bg-[#F2F1DF]/90 text-[#26240B] p-2 sm:p-3 rounded-full hover:bg-[#F2F1DF] transition-all duration-200"
+                  aria-label="Imagen siguiente"
+                >
+                  <ChevronRight size={26} />
+                </button>
+              </>
+            )}
+
+            <img
+              src={displayedImage}
+              alt={`${service.name} en pantalla completa ${currentImageIndex + 1}`}
+              className="max-w-[94vw] max-h-[88dvh] object-contain rounded-md"
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 }
